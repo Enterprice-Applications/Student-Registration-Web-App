@@ -21,3 +21,16 @@ main table td:last-child {
     width: 50px;
     font-size: 26px;
 }
+
+main table td:last-child > i:hover{
+    color: red;
+}
+
+main .profile-picture {
+    width: 80px;
+    background-color: lightgray;
+    object-fit: contain;
+    background-position: center;
+    border-radius: 50%;
+    padding: 5px;
+}
