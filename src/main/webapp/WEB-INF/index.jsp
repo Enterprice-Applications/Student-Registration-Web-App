@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xl-4">
             <h4 class="mt-2">New Student Details</h4>
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="students" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="txt-name" class="form-label">Student Name <b class="text-danger">*</b></label>
                     <input required pattern="^[A-Za-z ]+$" name="name" type="text" class="form-control" id="txt-name" placeholder="Eg. Kasun Sampath">
@@ -71,6 +71,5 @@
         </div>
     </div>
 </main>
-
 </body>
 </html>

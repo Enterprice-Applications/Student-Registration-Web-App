@@ -1,5 +1,6 @@
 package lk.ijse.dep11.web;
 
+import lk.ijse.dep11.web.to.Student;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletException;
@@ -10,17 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet({"/students", ""})
 @MultipartConfig(location = "/tmp")
 public class StudentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionPool");
+        try (Connection connection = pool.getConnection()) {
+            Statement stm = connection.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT S.*, P.path FROM student AS S LEFT OUTER JOIN picture AS P ON S.id = P.student_id");
+            List<Student> studentList = new ArrayList<>();
+            while (rst.next()){
+                String id = String.format("S%03d",rst.getInt("id"));
+                String name = rst.getString("name");
+                String address = rst.getString("address");
+                String path = rst.getString("path");
+                studentList.add(new Student(id, name, address, path));
+            }
+            req.setAttribute("studentList", studentList);
+            getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
