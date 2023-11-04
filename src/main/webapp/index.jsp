@@ -15,6 +15,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="p-2 text-center border-bottom">
+    <h1 class="mb-0">Student Explorer</h1>
+</header>
+<main class="container-fluid">
+    <div class="row">
+        <div class="col-xl-4">
+            <h4 class="mt-2">New Student Details</h4>
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="txt-name" class="form-label">Student Name <b class="text-danger">*</b></label>
+                    <input required pattern="^[A-Za-z ]+$" name="name" type="text" class="form-control" id="txt-name" placeholder="Eg. Kasun Sampath">
+                </div>
+                <div class="mb-3">
+                    <label for="txt-address" class="form-label">Student Address <b class="text-danger">*</b></label>
+                    <input required minlength="2" name="address" type="text" class="form-control" id="txt-address" placeholder="Eg. Grace Peries Road, Panadura">
+                </div>
+                <div class="mb-3">
+                    <label for="txt-picture" class="form-label">Student Picture</label>
+                    <input name="picture" accept="image/*" class="form-control" type="file" id="txt-picture">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary">SAVE</button>
+                    <button type="reset" class="btn btn-warning">CLEAR</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-xl-8">
+            <table class="mt-2 table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center">PICTURE</th>
+                    <th class="text-center">ID</th>
+                    <th>NAME</th>
+                    <th>ADDRESS</th>
+                    <th class="text-center"></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</main>
 
 </body>
 </html>

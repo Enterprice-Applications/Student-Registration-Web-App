@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+main table th:first-child,
+main table td:first-child {
+    width: 100px;
+}
+
+main table th:nth-child(2),
+main table td:nth-child(2) {
+    width: 70px;
+}
+
+main table th:last-child,
+main table td:last-child {
+    width: 50px;
+    font-size: 26px;
+}
